@@ -4,6 +4,7 @@ FBullCowGame::FBullCowGame() { Reset(); } // Constructor function
 
 int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
+int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
 
 void FBullCowGame::Reset()
 {
@@ -46,7 +47,12 @@ bool FBullCowGame::IsGameWon() const
 	return false;
 }
 
-bool FBullCowGame::CheckGuessValidity(FString)
+bool FBullCowGame::CheckGuessValidity(FString Guess) const
 {
+	if (Guess == MyHiddenWord) {
+		return true;
+	}
+	else {
 	return false;
+	}
 }

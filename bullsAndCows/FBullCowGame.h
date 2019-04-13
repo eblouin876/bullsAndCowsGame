@@ -13,15 +13,16 @@ struct FBullCowCount
 
 class FBullCowGame {
 public:
-	// Constructor method (automatically runs on instantiation)
-	FBullCowGame();
+	FBullCowGame(); // Constructor method (automatically runs on instantiation)
 
-	// Getter functions and other functions that don't change anything in the class
+	// Getter functions and other functions that don't mutate any of the private variables in the class
 	int32 GetMaxTries() const; 
 	int32 GetCurrentTry() const;
-	bool IsGameWon() const;
+	int32 GetHiddenWordLength() const;
 
-	bool CheckGuessValidity(FString); // TODO make a more rich return value (something that tells us what comes back)
+	bool IsGameWon() const;
+	bool CheckGuessValidity(FString) const; // TODO make a more rich return value (something that tells us what comes back)
+	
 	void Reset(); // TODO make a more rich return value (something that tells us what comes back)
 	FBullCowCount SubmitGuess(FString);
 
