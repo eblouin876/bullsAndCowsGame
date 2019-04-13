@@ -52,13 +52,15 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 
 bool FBullCowGame::IsIsogram(FString Word) const
 {
-	// treat 0 and 1 letter words as isograms
-	// Define a hash table (map)
-	// For each letter in our input
-		// If the letter is not in our hash table
-			// Place it in the table
-		// Otherwise the letter is in the hash table
-			// the word is not an isogram
+	if (Word.length() <= 1) { return true; } // treat 0 and 1 letter words as isograms
+
+	TMap<char, bool> LetterSeen; // Define a hash table (map)
+	for (auto Letter : Word) // for each letter in the word
+	{
+		Letter = tolower(Letter); // handles case insensitively
+		if (LetterSeen[Letter]) { return false; }
+		else { LetterSeen[Letter] = true; }
+	}
 	return true;
 }
 
