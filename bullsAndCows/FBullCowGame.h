@@ -5,6 +5,9 @@
 
 class FBullCowGame {
 public:
+	// Constructor method (automatically runs on instantiation)
+	FBullCowGame();
+
 	// Getter functions and other functions that don't change anything in the class
 	int GetMaxTries() const; 
 	int GetCurrentTry() const;
@@ -16,6 +19,6 @@ public:
 
 private:
 	// Member variables and helper functions
-	int MyCurrentTry = 1;
-	int MyMaxTries = 5;
+	int MyCurrentTry; // Initialized in constructor
+	int MyMaxTries; // Initialized in constructor
 };
