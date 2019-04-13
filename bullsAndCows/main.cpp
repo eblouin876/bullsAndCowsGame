@@ -39,6 +39,24 @@ int main()
 void PrintIntro()
 {
 	std::cout << "\n\nWelcome to Bulls and Cows, a fun word game.\n";
+	std::cout << "	                               /;    ;\\ \n";
+	std::cout << "                                   __  \\\\____//   \n";
+	std::cout << "                                  /{_\\_/   `'\\____ \n";
+	std::cout << "                                  \\___   (o)  (o  } \n";
+	std::cout << "       _____________________________/          :--'  \n";
+	std::cout << "   ,-,'`@@@@@@@@       @@@@@@         \\_    `__\\     \n";
+	std::cout << "  ;:(  @@@@@@@@@        @@@             \\___(o'o)    \n";
+	std::cout << "  :: )  @@@@          @@@@@@        ,'@@(  `===='     \n";
+	std::cout << "  :: : @@@@@:          @@@@         `@@@:				\n";
+	std::cout << "  :: \\  @@@@@:       @@@@@@@)    (  '@@@' \n";
+	std::cout << "  ;; /\\      /`,    @@@@@@@@@\\   :@@@@@) \n";
+	std::cout << "  ::/  )    {_----------------:  :~`,~~; \n";
+	std::cout << " ;;'`; :   )                  :  / `; ; \n";
+	std::cout << ";;;; : :   ;                  :  ;  ; :        \n";
+	std::cout << "`'`' / :  :                   :  :  : : \n";
+	std::cout << "    )_ \\__;                   :_ ;  \\_\\       \n";
+	std::cout << "    :__\\  \\                   \\  \\  :  \\    \n";
+	std::cout << "        `^'                    `^'  `-^-'     \n";
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
@@ -87,7 +105,7 @@ FText GetValidGuess()
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
 	do {
 		int32 CurrentGuess = BCGame.GetCurrentTry();
-		std::cout << "Try " << CurrentGuess << " Enter your guess: ";
+		std::cout << "Try " << CurrentGuess << " of " << BCGame.GetMaxTries() << ". Enter your guess: ";
 		std::getline(std::cin, Guess);
 
 
@@ -96,19 +114,18 @@ FText GetValidGuess()
 		switch (Status)
 		{
 		case EGuessStatus::Not_Isogram:
-			std::cout << "Please enter a word without repeating letters.\n";
+			std::cout << "Please enter a word without repeating letters.\n\n";
 			break;
 		case EGuessStatus::Wrong_Length:
-			std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n";
+			std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n\n";
 			break;
 		case EGuessStatus::Not_Lowercase:
-			std::cout << "Please enter a word that is all lowercase.\n";
+			std::cout << "Please enter a word that is all lowercase.\n\n";
 			break;
 		default:
 			// Assume valid
 			break;
 		}
-		std::cout << std::endl;
 	} while (Status != EGuessStatus::OK); // Keep looping until there are no errors
 	return Guess;
 }
