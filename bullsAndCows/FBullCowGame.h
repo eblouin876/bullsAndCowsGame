@@ -14,6 +14,6 @@ public:
 
 private:
 	// Member variables and helper functions
-	int MyCurrentTry;
-	int MyMaxTries;
+	int MyCurrentTry = 1;
+	int MyMaxTries = 5;
 };
