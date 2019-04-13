@@ -5,11 +5,13 @@
 
 class FBullCowGame {
 public:
-	void Reset(); // TODO make a more rich return value (something that tells us what comes back)
-	int GetMaxTries(); 
-	int GetCurrentTry();
-	bool IsGameWon();
+	// Getter functions and other functions that don't change anything in the class
+	int GetMaxTries() const; 
+	int GetCurrentTry() const;
+	bool IsGameWon() const;
+
 	bool CheckGuessValidity(std::string); // TODO make a more rich return value (something that tells us what comes back)
+	void Reset(); // TODO make a more rich return value (something that tells us what comes back)
 
 
 private:
