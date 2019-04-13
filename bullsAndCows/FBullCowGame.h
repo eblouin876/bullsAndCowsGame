@@ -15,6 +15,7 @@ public:
 
 	bool CheckGuessValidity(std::string); // TODO make a more rich return value (something that tells us what comes back)
 	void Reset(); // TODO make a more rich return value (something that tells us what comes back)
+	// provide a method for counting bulls and cows, and incrementing try number
 
 
 private:
