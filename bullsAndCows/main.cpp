@@ -77,6 +77,7 @@ void PrintGameSummary()
 	else {
 		std::cout << "Sorry, better luck next time!";
 	}
+	std::cout << std::endl;
 }
 
 // Loop continually until the user gives a valid guess

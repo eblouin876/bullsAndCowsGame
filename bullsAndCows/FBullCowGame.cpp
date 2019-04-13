@@ -12,6 +12,7 @@ int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); 
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
 
+// Resets the game state
 void FBullCowGame::Reset()
 {
 	constexpr int32 MAX_TRIES = 8;
@@ -26,6 +27,7 @@ void FBullCowGame::Reset()
 
 	return;
 }
+
 
 // Receives a VALID guess, increments turn, and returns count
 FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
@@ -64,13 +66,22 @@ bool FBullCowGame::IsIsogram(FString Word) const
 	return true;
 }
 
+bool FBullCowGame::IsLowercase(FString Word) const
+{
+	for (auto Letter : Word)
+	{
+		if (!islower(Letter)) { return false; }
+	}
+	return true;
+}
+
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 {
 	if (!IsIsogram(Guess))// if the guess isn't an isogram
 	{
 		return EGuessStatus::Not_Isogram; // TODO write function to check isogram
 	}
-	else if (false)// if the guess isn't all lowercase 
+	else if (!IsLowercase(Guess))// if the guess isn't all lowercase 
 	{
 		return EGuessStatus::Not_Lowercase; // TODO write function to check lowercase
 	}
