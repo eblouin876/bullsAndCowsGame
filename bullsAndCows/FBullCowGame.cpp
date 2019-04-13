@@ -19,11 +19,7 @@ int32 FBullCowGame::GetMaxTries() const
 // Resets the game state
 void FBullCowGame::Reset()
 {
-	const FString HIDDEN_WORD = "planet";
-	MyHiddenWord = HIDDEN_WORD;
-
 	MyCurrentTry = 1;
-
 	bGameIsWon = false;
 
 	return;
@@ -74,6 +70,12 @@ bool FBullCowGame::IsLowercase(FString Word) const
 		if (!islower(Letter)) { return false; }
 	}
 	return true;
+}
+
+void FBullCowGame::SelectDifficulty(FString Difficulty) 
+{
+	TMap<FString, FString> WordList{ {"1", "pen"}, {"2", "soul"}, {"3", "ideas"}, {"4", "rocket"}, {"5", "capture"} };
+	MyHiddenWord = WordList[Difficulty];
 }
 
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const

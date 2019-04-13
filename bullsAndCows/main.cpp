@@ -9,14 +9,17 @@ user interaction. For game logic, see the FBullCowGame class.
 #include <string>
 #include "FBullCowGame.h"
 
+// making syntax Unreal friendly
 using FText = std::string; // FText is typcially used for user interaction
 using int32 = int;
 
+// prototypes outside class
 void PrintIntro();
 void PlayGame();
 void PrintGameSummary();
 FText GetValidGuess();
 bool AskToPlayAgain();
+void ChooseDifficulty();
 
 FBullCowGame BCGame; // Instantiate a new game
 
@@ -35,7 +38,6 @@ int main()
 	return 0; // Exit the application
 }
 
-// Introduce the game
 void PrintIntro()
 {
 	std::cout << "\n\nWelcome to Bulls and Cows, a fun word game.\n";
@@ -57,6 +59,7 @@ void PrintIntro()
 	std::cout << "    )_ \\__;                   :_ ;  \\_\\       \n";
 	std::cout << "    :__\\  \\                   \\  \\  :  \\    \n";
 	std::cout << "        `^'                    `^'  `-^-'     \n";
+	ChooseDifficulty();
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
@@ -133,8 +136,22 @@ FText GetValidGuess()
 // Ask the player if they want to play another game
 bool AskToPlayAgain()
 {
-	std::cout << "Do you want to play again with the same hidden word? (y/n) ";
+	std::cout << "Do you want to play again? (y/n) ";
 	FText Response = "";
 	std::getline(std::cin, Response);
 	return (Response[0] == 'y' || Response[0] == 'Y');
+}
+
+// Allows the player to select difficulty between 1 and 5
+void ChooseDifficulty() 
+{
+	std::cout << "Please select a difficulty between 1 and 5. ";
+	FText Response = "";
+	std::getline(std::cin, Response);
+	if (Response == "1") { BCGame.SelectDifficulty("1"); }
+	else if (Response == "2") { BCGame.SelectDifficulty("2"); }
+	else if (Response == "3") { BCGame.SelectDifficulty("3"); }
+	else if (Response == "4") { BCGame.SelectDifficulty("4"); }
+	else if (Response == "5") { BCGame.SelectDifficulty("5"); }
+	else { ChooseDifficulty(); }
 }

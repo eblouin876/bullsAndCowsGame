@@ -29,6 +29,7 @@ public:
 	int32 GetMaxTries() const; 
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
+	void SelectDifficulty(FString);
 
 	bool IsGameWon() const;
 	EGuessStatus CheckGuessValidity(FString) const;
@@ -45,4 +46,5 @@ private:
 
 	bool IsIsogram(FString) const;
 	bool IsLowercase(FString) const;
+
 };
