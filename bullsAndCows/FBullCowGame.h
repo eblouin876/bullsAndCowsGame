@@ -11,6 +11,16 @@ struct FBullCowCount
 	int32 Cows = 0;
 };
 
+// Status codes for checking the input word status
+enum class EGuessStatus
+{
+	Invalid_Status,
+	OK,
+	Not_Isogram,
+	Wrong_Length,
+	Not_Lowercase
+};
+
 class FBullCowGame {
 public:
 	FBullCowGame(); // Constructor method (automatically runs on instantiation)
@@ -21,7 +31,7 @@ public:
 	int32 GetHiddenWordLength() const;
 
 	bool IsGameWon() const;
-	bool CheckGuessValidity(FString) const; // TODO make a more rich return value (something that tells us what comes back)
+	EGuessStatus CheckGuessValidity(FString) const;
 	
 	void Reset(); // TODO make a more rich return value (something that tells us what comes back)
 	FBullCowCount SubmitGuess(FString);
