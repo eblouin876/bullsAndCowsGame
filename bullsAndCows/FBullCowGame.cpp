@@ -1,6 +1,8 @@
+#pragma once
+
 #include "FBullCowGame.h"
 #include <map>
-#define TMap std::map
+#define TMap std::map // making syntax Unreal friendly
 
 using int32 = int;
 
@@ -75,7 +77,7 @@ bool FBullCowGame::IsLowercase(FString Word) const
 void FBullCowGame::SelectDifficulty(FString Difficulty) 
 {
 	TMap<FString, FString> WordList{ {"1", "pen"}, {"2", "soul"}, {"3", "ideas"}, {"4", "rocket"}, {"5", "capture"} };
-	MyHiddenWord = WordList[Difficulty];
+	if(IsIsogram(WordList[Difficulty])) { MyHiddenWord = WordList[Difficulty]; }
 }
 
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
